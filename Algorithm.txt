@@ -1,0 +1,48 @@
+Cubic Bezier(abscissa x1, ordinate y1, abscissa x2, ordinate y2)
+{
+		//dividing each points and segments in 100 parts
+		for(int i; i<100; i++)
+		{
+				//calculating slope of first line segment
+				float dx1 = (float)(x1 - 0); // divide by hundred if they are not floating points and less than one.
+				float dy1 = (float)(y1 - 0); // by simple straight line theorm
+				//x and y co - ordinates of first line
+				float xfirst = dx1 * i;
+				float yfirst = dy1 * i;
+				//calculating slope of second line segment
+				float dx2 = (float)(x2 - x1);
+				float dy2 = (float)(y2 - y1);
+				//x and y co-ordinates of second line statement
+				float xsecond = x1 + (dx2 * i);//x1 is distance from 0;
+				float ysecond = y1 + (dy2 * i);//y1 is distance from 0;
+				//calculating slope of third line segment
+				float dx3 = (float)(100 - x2);//100% compeletion is denoted by 100 abscicca and ordinate of x and y
+				float dy3 = (float)(100 - y2);
+				//calculating x and y instance of third line segment
+				float xthird = x2 + (dx3 * i);
+				float ythird = y2 + (dy3 * i);
+				//Now we Have three points which can be made into two lines
+				//Calculating from line 1 and 2
+				//slope of line 
+				float dxl1 = (xsecond - xfirst);
+				float dyl1 = (ysecond - yfirst);
+				//calculating the point
+				float xlevel1 = xfirst + (dxl1 * i);
+				float ylevel1 = yfirst + (dyl1 * i);
+				//Calculating from line 2 and 3
+				//Slope of line
+				float dxl2 = (xthird - xsecond);
+				float dyl2 = (ythird - ysecond);
+				//Calculating points on line
+				float xlevel2 = xsecond + (dxl2 * i);
+				float ylevel2 = ysecond + (dyl2 * i);
+				//Now we have two points (xlevel1, ylevel1), (xlevel2, ylevel2) which can be formed into single line
+				//calculating slope of line
+				float dxfinal = (xlevel2 - xlevel1);
+				float dyfinal = (ylevel2 - ylevel1);
+				//calculating the final points of curve
+				float xfinal = xlevel1 + (dxfinal * i);
+				float yfinal = ylevel1 + (dxfinal * i);
+				//the curve is solved for i = time;
+		}
+}
